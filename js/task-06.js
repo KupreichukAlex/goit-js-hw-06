@@ -1,17 +1,21 @@
-const refs = {
-    validationInput: document.querySelector('#validation-input'),
-};
 
-const testValidation = (event) => {
-    event.currentTarget.value.length > refs.validationInput.dataset.length ? refs.validationInput.classList.add('invalid') :
-        refs.validationInput.classList.add('valid');
-    
-    if (event.currentTarget.value === "") {
-        refs.validationInput.classList.remove('invalid', 'valid');
+const validationInput = document.querySelector('#validation-input');
+
+validationInput.addEventListener('blur', onBlur);
+
+function onBlur(a) {
+    const inp = a.currentTarget;
+    const inpLength = Number(inp.dataset.length);
+
+    if (inp.value.length === inpLength) {
+        inp.classList.remove('invalid');
+        inp.classList.add('valid');
+
+    }
+    else {
+        inp.classList.remove('valid');
+        inp.classList.add('invalid');
     }
 };
 
-const resetValidation = (event) =>
-    refs.validationInput.classList.remove('valid', 'invalid');
-refs.validationInput.addEventListener("blur", testValidation);
-refs.validationInput.addEventListener("focus", resetValidation);
+

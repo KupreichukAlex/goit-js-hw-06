@@ -19,7 +19,7 @@ function onInputClick(event) {
   let amount = event.currentTarget.value;
   console.log("Количество дивов -", amount);
 
-  const elements = [];
+  let elements = [];
 
   refs.createBtnEl.addEventListener("click", createBoxes);
   refs.destroyBtnEl.addEventListener("click", onDestroyBtnElClick);
@@ -45,7 +45,7 @@ function onInputClick(event) {
   function onDestroyBtnElClick() {
     refs.boxesCountainerEl.innerHTML = "";
     refs.inputEl.value = "";
-
+    elements = [];
     console.log("div#boxes очищен!", amount);
   }
 } 
